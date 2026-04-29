@@ -2,6 +2,37 @@
 (function () {
   'use strict';
 
+  // ---- Phone routing -------------------------------------------------
+  const PHONES = ['010-8356-4009', '010-8008-4106', '010-7772-1133'];
+  const KAKAO_URL = 'https://open.kakao.com/o/gKXSTOXf';
+  const isMobile =
+    /iphone|ipad|ipod|android|mobile/i.test(navigator.userAgent) ||
+    (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches);
+  const pickPhone = () => PHONES[Math.floor(Math.random() * PHONES.length)];
+
+  // Top bar + floating call button: rotate across 3 numbers per page load.
+  document.querySelectorAll('.topbar-call, .fb-call').forEach((el) => {
+    if (isMobile) {
+      el.href = 'tel:' + pickPhone();
+    } else {
+      el.href = KAKAO_URL;
+      el.target = '_blank';
+      el.rel = 'noopener';
+      el.title = 'PC에서는 카카오톡 상담으로 연결됩니다';
+    }
+  });
+
+  // Contact-card tel: links — keep the displayed number on mobile,
+  // but on desktop redirect to KakaoTalk since tel: dialer is unavailable.
+  if (!isMobile) {
+    document.querySelectorAll('.call-list a[href^="tel:"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open(KAKAO_URL, '_blank', 'noopener');
+      });
+    });
+  }
+
   // Hero slider
   const slides = document.querySelectorAll('.hero .slide');
   const dots = document.querySelectorAll('.hero-dots .dot');
