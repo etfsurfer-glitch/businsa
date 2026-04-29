@@ -1,5 +1,6 @@
 source/
 download_images.py
+convert_font.py
 *.log
 .DS_Store
 Thumbs.db

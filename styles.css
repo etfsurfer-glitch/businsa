@@ -2,6 +2,15 @@
    엘리프 성성호수공원 분양 홍보 — Mobile-first one-page
    ======================================================================== */
 
+@font-face {
+  font-family: 'BMDOHYEON';
+  src: url('assets/fonts/BMDOHYEON.woff2') format('woff2'),
+       url('assets/fonts/BMDOHYEON.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -24,7 +33,7 @@
 html, body {
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
+  font-family: 'BMDOHYEON', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -52,7 +61,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 }
 .brand { display: flex; align-items: center; gap: 8px; }
 .brand-mark {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-weight: 900;
   letter-spacing: 0.18em;
   font-size: 18px;
@@ -121,7 +130,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   margin-bottom: 14px;
 }
 .hero-title {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-weight: 900;
   font-size: 40px;
   line-height: 1.18;
@@ -229,7 +238,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   margin-bottom: 8px;
 }
 .why-head h2 {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.02em;
@@ -251,7 +260,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 }
 .why-list .num {
   flex-shrink: 0;
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-size: 26px;
   font-weight: 900;
   color: var(--accent);
@@ -281,7 +290,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   padding: 0 24px;
 }
 .block-head h2 {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-weight: 700;
   font-size: 24px;
   letter-spacing: -0.02em;
@@ -367,7 +376,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   margin-bottom: 10px;
 }
 .cta-big h2 {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.4;
@@ -435,7 +444,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 }
 .call-list .num {
   flex: 1;
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-size: 19px;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -462,7 +471,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   text-align: center;
 }
 .f-brand {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'BMDOHYEON', 'Noto Serif KR', serif;
   font-weight: 700;
   font-size: 16px;
   color: var(--accent-soft);
