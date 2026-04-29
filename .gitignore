@@ -1,0 +1,6 @@
+source/
+download_images.py
+*.log
+.DS_Store
+Thumbs.db
+node_modules/

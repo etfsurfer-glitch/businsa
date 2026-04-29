@@ -1,0 +1,540 @@
+/* ========================================================================
+   엘리프 성성호수공원 분양 홍보 — Mobile-first one-page
+   ======================================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f6f4ef;
+  --bg-dark: #1a2634;
+  --bg-darker: #111a25;
+  --ink: #1a2634;
+  --ink-soft: #4a5a6e;
+  --ink-mute: #8a96a5;
+  --line: #e7e2d9;
+  --line-dark: #2c3a4c;
+  --accent: #b48a3c;       /* warm gold */
+  --accent-soft: #d8b56e;
+  --kakao: #fee500;
+  --kakao-ink: #181600;
+  --shadow: 0 12px 32px rgba(20, 30, 50, 0.18);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; border: 0; background: none; cursor: pointer; color: inherit; }
+
+/* ---- TOP BAR ----------------------------------------------------------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(26, 38, 52, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand-mark {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  font-size: 18px;
+  color: var(--accent-soft);
+}
+.brand-name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  opacity: 0.92;
+}
+.topbar-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.topbar-call svg { width: 14px; height: 14px; }
+
+/* ---- HERO -------------------------------------------------------------- */
+.hero {
+  position: relative;
+  height: 92vh;
+  min-height: 580px;
+  max-height: 820px;
+  overflow: hidden;
+  color: #fff;
+}
+.hero-slider, .hero-overlay { position: absolute; inset: 0; }
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1200ms ease;
+  transform: scale(1.05);
+  animation: kenburn 16s ease-in-out infinite;
+}
+.slide.active { opacity: 1; }
+@keyframes kenburn {
+  0%   { transform: scale(1.05); }
+  100% { transform: scale(1.18); }
+}
+.hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.05) 50%, rgba(20,30,45,0.88) 100%);
+  pointer-events: none;
+}
+.hero-content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 0 26px 88px;
+  z-index: 2;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  font-weight: 700;
+  color: var(--accent-soft);
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+.hero-title .line {
+  display: block;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+.hero-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 400;
+  opacity: 0.95;
+  margin-bottom: 18px;
+}
+.hero-sub strong {
+  font-weight: 700;
+  font-size: 17px;
+}
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.hero-badges span {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.06);
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 22px;
+  background: var(--kakao);
+  color: var(--kakao-ink);
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.hero-cta svg { width: 18px; height: 18px; }
+.hero-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+.hero-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transition: all 250ms ease;
+}
+.hero-dots .dot.active {
+  width: 24px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+/* ---- HEADLINE STRIP --------------------------------------------------- */
+.strip {
+  background: var(--bg-dark);
+  color: #fff;
+  padding: 22px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--line-dark);
+}
+.strip-inner p {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.strip-inner p strong {
+  color: var(--accent-soft);
+  font-weight: 800;
+}
+.strip-inner p.small {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 4px;
+  letter-spacing: 0;
+}
+
+/* ---- WHY 4 POINTS ----------------------------------------------------- */
+.why { padding: 64px 22px; background: var(--bg-alt); }
+.why-head { text-align: center; margin-bottom: 32px; }
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.36em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.why-head h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+.why-list {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+.why-list li {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  padding: 22px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
+}
+.why-list .num {
+  flex-shrink: 0;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+.why-list .text h3 {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.why-list .text p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ---- BLOCKS ----------------------------------------------------------- */
+.block { padding: 64px 0 52px; background: #fff; }
+.block.dark { background: var(--bg-darker); color: #fff; }
+.block.dark .lead { color: rgba(255, 255, 255, 0.7); }
+.block.dark .kicker { color: var(--accent-soft); }
+
+.block-head {
+  text-align: center;
+  margin-bottom: 26px;
+  padding: 0 24px;
+}
+.block-head h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.lead {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  padding: 0 18px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tab {
+  flex: 1 0 auto;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: all 200ms ease;
+}
+.block.dark .tab {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--line-dark);
+  color: rgba(255, 255, 255, 0.7);
+}
+.tab.active {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.block.dark .tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.tab-panel {
+  display: none;
+  padding: 0 12px;
+}
+.tab-panel.active { display: block; }
+.tab-panel img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(15, 25, 40, 0.12);
+}
+
+.full-img {
+  padding: 0 12px;
+}
+.full-img img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(15, 25, 40, 0.18);
+}
+
+/* ---- BIG CTA ---------------------------------------------------------- */
+.cta-big {
+  position: relative;
+  padding: 72px 24px;
+  background:
+    linear-gradient(180deg, rgba(20,30,45,0.85), rgba(20,30,45,0.92)),
+    url('assets/img/hero2.png') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+}
+.cta-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.36em;
+  color: var(--accent-soft);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.cta-big h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.cta-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  opacity: 0.9;
+  margin-bottom: 26px;
+}
+.cta-desc strong { color: var(--accent-soft); font-weight: 700; }
+.kakao-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  background: var(--kakao);
+  color: var(--kakao-ink);
+  font-weight: 900;
+  font-size: 16px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  letter-spacing: -0.01em;
+}
+.kakao-btn svg { width: 22px; height: 22px; }
+.cta-foot {
+  margin-top: 14px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* ---- CONTACTS --------------------------------------------------------- */
+.contacts {
+  padding: 64px 22px 80px;
+  background: var(--bg-alt);
+}
+.call-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.call-list a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(20, 30, 50, 0.06);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.call-list a:active { transform: scale(0.98); }
+.call-list .role {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 70px;
+}
+.call-list .num {
+  flex: 1;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.call-list .ic {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.call-list .ic svg { width: 16px; height: 16px; }
+
+/* ---- FOOTER ----------------------------------------------------------- */
+.footer {
+  padding: 36px 24px 110px;
+  background: var(--bg-darker);
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+}
+.f-brand {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--accent-soft);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+}
+.f-line {
+  font-size: 11px;
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.f-copy {
+  margin-top: 18px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+/* ---- FLOATING BUTTONS ------------------------------------------------- */
+.float-btns {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.float-btns a {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  transition: transform 180ms ease;
+}
+.float-btns a:active { transform: scale(0.92); }
+.fb-call {
+  background: var(--accent);
+  color: #fff;
+}
+.fb-call svg { width: 22px; height: 22px; }
+.fb-kakao {
+  background: var(--kakao);
+  color: var(--kakao-ink);
+  position: relative;
+}
+.fb-kakao svg { width: 26px; height: 26px; }
+.fb-kakao::after {
+  content: '상담';
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  background: #ff3b3b;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 3px 6px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+/* ---- DESKTOP TWEAKS --------------------------------------------------- */
+@media (min-width: 720px) {
+  .hero-title { font-size: 56px; }
+  .hero-sub { font-size: 17px; }
+  .hero-content { padding: 0 56px 110px; }
+  .why-head h2, .block-head h2, .cta-big h2 { font-size: 30px; }
+  .why-list { grid-template-columns: 1fr 1fr; }
+  .block-head .lead { font-size: 14px; }
+  .tabs { max-width: 720px; margin: 0 auto 18px; }
+  .tab-panel, .full-img { max-width: 880px; margin: 0 auto; }
+}
