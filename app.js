@@ -33,6 +33,26 @@
     });
   }
 
+  // Popup — show once per day (or per session if storage unavailable)
+  const POPUP_KEY = 'elif_popup_hide_until';
+  const popup = document.getElementById('popupOverlay');
+  if (popup) {
+    let hideUntil = 0;
+    try { hideUntil = parseInt(localStorage.getItem(POPUP_KEY) || '0', 10) || 0; } catch (e) {}
+    if (Date.now() >= hideUntil) {
+      popup.hidden = false;
+    }
+    const closeBtn = document.getElementById('popupClose');
+    const hideBtn = document.getElementById('popupHideToday');
+    const close = () => { popup.hidden = true; };
+    closeBtn && closeBtn.addEventListener('click', close);
+    hideBtn && hideBtn.addEventListener('click', () => {
+      try { localStorage.setItem(POPUP_KEY, String(Date.now() + 24 * 60 * 60 * 1000)); } catch (e) {}
+      close();
+    });
+    popup.addEventListener('click', (e) => { if (e.target === popup) close(); });
+  }
+
   // Hero slider
   const slides = document.querySelectorAll('.hero .slide');
   const dots = document.querySelectorAll('.hero-dots .dot');
