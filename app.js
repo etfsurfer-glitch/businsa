@@ -34,7 +34,7 @@
   }
 
   // Popup — show once per day (or per session if storage unavailable)
-  const POPUP_KEY = 'elif_popup_hide_until';
+  const POPUP_KEY = 'elif_popup_hide_until_v2';
   const popup = document.getElementById('popupOverlay');
   if (popup) {
     let hideUntil = 0;
